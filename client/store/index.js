@@ -27,29 +27,31 @@ let state = {
 }
 
 const mutations = {
-  ADD(todo){
+  CREATE(state,todo){
     state.todos.push(todo);
   },
-  REMOVE(todo){
-    state.todos.splice(state.todos.indexOf(todo),1)
+
+  REMOVE(state,todo){
+    state.todos.splice(state.todos.indexOf(todo),1);
   },
 
-  COMPLETED(todo){
-    state.todos[state.todos.indexOf(todo)].done=true
+  COMPLETED(state,todo){
+    state.todos[state.todos.indexOf(todo)].done=true;
   }
 
 }
 
 const actions = {
-
-  completeTodo(todo){
-    store.commit('COMPLETED',todo)
+  completeTodo({commit},todo){
+    commit('COMPLETED',todo);
+  },
+  
+  removeTodo({commit},todo){
+    commit('REMOVE',todo);
   },
 
-  incrementAsync ({ commit }) {
-    setTimeout(() => {
-      commit('INCREMENT')
-    }, 200)
+  createTodo({commit}, todo){
+    commit('CREATE',todo);
   }
 }
 

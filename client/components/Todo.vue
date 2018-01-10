@@ -59,10 +59,10 @@
 				this.isEditing=false;
 			},
 			deleteTodo(todo){
-				this.$emit("detele-todo",todo);
+				this.$store.dispatch("removeTodo",todo);
 			},
 			completeTodo(todo){
-				this.$store.dispatch('completeTodo', {todo:todo});
+				this.$store.dispatch('completeTodo', todo);
 			},
       },
 	};

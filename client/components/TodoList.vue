@@ -3,7 +3,8 @@
     <p>Законченные дела: {{this.done.length}}</p>
     <p>Текущие дела:{{this.current.length}}</p>
     <div v-for="todo in this.$store.state.todos">
-    <todo :todo='todo'></todo>
+    <todo :todo.sync='todo'></todo>
+
     </div>
     
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import todo from 'components/Todo'
+
 export default {
   computed: {
     done() {
@@ -19,7 +21,6 @@ export default {
     current(){
       return  this.$store.state.todos.filter(todo => {return todo.done === false})
     }
-
   },
 
   components:{
