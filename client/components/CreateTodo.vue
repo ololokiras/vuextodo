@@ -48,11 +48,17 @@ export default {
       if (this.titleText.length > 0 && this.projectText.length > 0) {
         const title = this.titleText;
         const project = this.projectText;
-        this.$store.dispatch('createTodo', {
-          title,
-          project,
+
+        console.log({
+          title:this.titleText,
+          project:this.projectText,
           done: false,
         });
+        this.$store.dispatch('process',{action:'PUSH',todo: {
+          title:this.titleText,
+          project:this.projectText,
+          done: false,
+        }});
         this.titleText='';
         this.projectText='';
         this.newTodoText = '';

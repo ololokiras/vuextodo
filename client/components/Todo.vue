@@ -59,10 +59,10 @@
 				this.isEditing=false;
 			},
 			deleteTodo(todo){
-				this.$store.dispatch("removeTodo",todo);
+				this.$store.dispatch("process",{action:'REMOVE',todo});
 			},
 			completeTodo(todo){
-				this.$store.dispatch('completeTodo', todo);
+				this.$store.dispatch("process",{action:'COMPLETE', todo});
 			},
       },
 	};

@@ -1,12 +1,15 @@
 <template>
   <div>
-    <p>Законченные дела: {{this.done.length}}</p>
-    <p>Текущие дела:{{this.current.length}}</p>
-    <div v-for="todo in this.$store.state.todos">
-    <todo :todo.sync='todo'></todo>
-
+    <div v-if="this.$store.state.todos.length">
+      <p>Законченные дела: {{this.done.length}}</p>
+      <p>Текущие дела:{{this.current.length}}</p>
+      <div v-for="todo in this.all">
+        <todo :todo.sync='todo'></todo>
+      </div>    
     </div>
-    
+    <div v-else>
+      No todos
+    </div>
   </div>
 </template>
 
@@ -20,6 +23,9 @@ export default {
     },
     current(){
       return  this.$store.state.todos.filter(todo => {return todo.done === false})
+    },
+    all(){
+      return this.$store.state.todos;
     }
   },
 
