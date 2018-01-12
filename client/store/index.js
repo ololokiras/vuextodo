@@ -12,11 +12,13 @@ let store=new Vuex.Store({
   plugins: [createPersistedState()],
   
 
-  
-
   mutations:{
     REMOVE:(state,todo)    => state.todos.splice(todo,1),
-    COMPLETE: (state,todo) => state.todos[state.todos.indexOf(todo)].done=true,
+    CHANGE_STATE: (state,todo) => {
+      state.todos[state.todos.indexOf(todo)].done=!state.todos[state.todos.indexOf(todo)].done;
+      /*let index=state.todos[state.todos.indexOf(todo)];
+      state.todos[index].done=!state.todos[index].done;*/
+    },
     PUSH: (state,todo) => state.todos.push(todo)
   },
 
@@ -26,15 +28,6 @@ let store=new Vuex.Store({
       commit(action,todo);
     }
   },
-  
- /* removeTodo({commit},todo){
-    commit('REMOVE',todo);
-  },
-
-  createTodo({commit}, todo){
-    commit('CREATE',todo);
-  }*/
-
 })
 
 export default store

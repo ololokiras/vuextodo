@@ -34,10 +34,10 @@
         </div>
       </div>
     </div>
-    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
+    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" v-on:click="changeState(todo)">
         Закончен
     </div>
-    <div class='ui bottom attached red basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
+    <div class='ui bottom attached red basic button' v-on:click="changeState(todo)" v-show="!isEditing && !todo.done">
         Длится
     </div>
   </div>
@@ -61,8 +61,8 @@
 			deleteTodo(todo){
 				this.$store.dispatch("process",{action:'REMOVE',todo});
 			},
-			completeTodo(todo){
-				this.$store.dispatch("process",{action:'COMPLETE', todo});
+			changeState(todo){
+				this.$store.dispatch("process",{action:'CHANGE_STATE', todo});
 			},
       },
 	};

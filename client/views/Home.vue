@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-  <todolist></todolist>
-  <createtodo></createtodo>
+	<todolist></todolist>
+	<createtodo></createtodo>-->
   </div>
 </template>
 
